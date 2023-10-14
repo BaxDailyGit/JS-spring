@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+
+import lombok.extern.slf4j.Slf4j;
+@Slf4j
 @RestController
 public class ProductController {
 
@@ -17,6 +20,7 @@ public class ProductController {
 
     @GetMapping("api/products")
     public List<Product> getProducts() {
+        log.info("---------- Log : getProducts ---------");
         return products;
     }
 
@@ -26,8 +30,10 @@ public class ProductController {
     @GetMapping("api/product/{index}")
     public Product getProduct(@PathVariable int index){
         if (index >= 0 && index < products.size()) {
+            log.info("---------- Log : getProduct : api/product/{"+ index +"} ----------");
             return products.get(index);
         } else {
+            log.info("---------- Log : getProduct : api/product/{"+ index +"} // out of valid index----------");
             return new Product("상품 준비중", 0);
         }
     }
@@ -38,19 +44,15 @@ public class ProductController {
 
     @PostMapping("/api/product")
     public String addProducts(@RequestBody Product product){
-
         if (Product.isDuplicateProduct(product.getName(), products)) {
+            log.info("---------- Log : addProducts : " + product.getName() + " : 실패 ----------");
             return "실패";
         }
         else {
             products.add(product);
+            log.info("---------- Log : addProducts : " + product.getName() + " : 성공 ----------");
             return "성공";
         }
-        /*
-        for (Product p : products) {
-            System.out.println("Product: " + p.getName() + ", Price: " + p.getPrice());
-        }
-        */
     }
 
 
