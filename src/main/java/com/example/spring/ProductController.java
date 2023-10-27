@@ -17,32 +17,27 @@ public class ProductController {
     }
 
 
-    List<Product> products = new ArrayList<>(
-            Arrays.asList(new Product("모니터", 100),
-                    new Product("키보드", 200),
-                    new Product("마우스", 300)
-            ));
+
 
 
 
 
     @GetMapping("api/products")
     public List<Product> getProducts() {
-        log.info("---------- Log : getProducts ---------");
-        return products;
+        return productService.getProducts();
     }
+
+
+
 
 
     @GetMapping("api/product/{index}")
     public Product getProduct(@PathVariable int index) {
-        if (index >= 0 && index < products.size()) {
-            log.info("---------- Log : getProduct : api/product/{" + index + "} ----------");
-            return products.get(index);
-        } else {
-            log.info("---------- Log : getProduct : api/product/{" + index + "} // out of valid index----------");
-            return new Product("상품 준비중", 0);
-        }
+        return productService.getProduct(index);
     }
+
+
+
 
 
     @PostMapping("/api/product")
