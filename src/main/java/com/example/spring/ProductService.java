@@ -1,19 +1,14 @@
 package com.example.spring;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Service
 public class ProductService {
+
     private final ProductRepository productRepository ;
-
-
     public ProductService(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
@@ -22,7 +17,7 @@ public class ProductService {
 
 
     public List<Product> getProducts() {
-        List <Product> products = productRepository.getProducts();
+        List <Product> products = productRepository.findAll();
 
         log.info("---------- Log : getProducts ---------");
         return products;
@@ -30,7 +25,7 @@ public class ProductService {
 
 
 
-
+/*
     public Product getProduct(int index) {
         List <Product> products = productRepository.getProducts();
         if (index >= 0 && index < products.size()) {
@@ -60,7 +55,7 @@ public class ProductService {
     }
 
 
-
+*/
 
 
 

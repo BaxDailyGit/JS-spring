@@ -3,13 +3,20 @@ package com.example.spring;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
+import javax.persistence.*;
 
 @NoArgsConstructor
 @Getter
+@Table
+@Entity
 public class Product {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column
     private String name;
+    @Column
     private int price;
 
 
@@ -17,8 +24,6 @@ public class Product {
         this.name = name;
         this.price = price;
     }
-
-
 }
 
 

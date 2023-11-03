@@ -28,7 +28,7 @@ public class ProductController {
     }
 
 
-
+/*
 
 
     @GetMapping("api/product/{index}")
@@ -45,6 +45,8 @@ public class ProductController {
 
         return productService.addProducts(product);
     }
+
+    */
 }
 
 
