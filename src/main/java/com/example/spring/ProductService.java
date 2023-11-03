@@ -9,20 +9,25 @@ import lombok.extern.slf4j.Slf4j;
 public class ProductService {
 
     private final ProductRepository productRepository ;
-    public ProductService(ProductRepository productRepository) {
+    private final ProductJpaRepository productJpaRepository ;
+    public ProductService(ProductRepository productRepository, ProductJpaRepository productJpaRepository) {
         this.productRepository = productRepository;
+        this.productJpaRepository = productJpaRepository;
     }
 
 
 
 
-    public List<Product> getProducts() {
-        List <Product> products = productRepository.findAll();
-
+    public List<ProductEntity> getProducts() {
         log.info("---------- Log : getProducts ---------");
-        return products;
+        return productJpaRepository.findAll();
     }
 
+    public void saveProducts(ProductEntity product) {
+
+        productJpaRepository.save(product);
+
+    }
 
 
 /*

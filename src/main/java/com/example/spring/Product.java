@@ -4,25 +4,27 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Random;
 
 @NoArgsConstructor
 @Getter
-@Table
-@Entity
+
 public class Product {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column
+
     private String name;
-    @Column
+
     private int price;
 
 
     public Product(String name, int price){
         this.name = name;
         this.price = price;
+
+        Random random = new Random();
+        this.id = Math.abs(random.nextLong() % 100L);
+
     }
 }
 

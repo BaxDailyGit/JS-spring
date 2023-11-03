@@ -1,8 +1,6 @@
 package com.example.spring;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 
@@ -23,13 +21,13 @@ public class ProductController {
 
 
     @GetMapping("api/products")
-    public List<Product> getProducts() {
+    public List<ProductEntity> getProducts() {
         return productService.getProducts();
     }
 
 
-/*
 
+/*
 
     @GetMapping("api/product/{index}")
     public Product getProduct(@PathVariable int index) {
@@ -37,16 +35,16 @@ public class ProductController {
     }
 
 
-
+*/
 
 
     @PostMapping("/api/product")
-    public String addProducts(@RequestBody Product product) {
+    public void addProducts(@RequestBody ProductEntity product) {
 
-        return productService.addProducts(product);
+        productService.saveProducts(product);
     }
 
-    */
+
 }
 
 
