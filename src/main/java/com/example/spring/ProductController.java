@@ -2,6 +2,7 @@ package com.example.spring;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 
 import lombok.extern.slf4j.Slf4j;
@@ -27,15 +28,12 @@ public class ProductController {
 
 
 
-/*
 
-    @GetMapping("api/product/{index}")
-    public Product getProduct(@PathVariable int index) {
-        return productService.getProduct(index);
+
+    @GetMapping("api/product/{id}")
+    public Optional<ProductEntity> getProduct(@PathVariable long id) {
+        return productService.getProduct(id);
     }
-
-
-*/
 
 
     @PostMapping("/api/product")

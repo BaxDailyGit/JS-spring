@@ -3,15 +3,18 @@ package com.example.spring;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Service
 public class ProductService {
 
-    private final ProductRepository productRepository ;
+    //private final ProductRepository productRepository ;
+
     private final ProductJpaRepository productJpaRepository ;
     public ProductService(ProductRepository productRepository, ProductJpaRepository productJpaRepository) {
-        this.productRepository = productRepository;
+        //this.productRepository = productRepository;
         this.productJpaRepository = productJpaRepository;
     }
 
@@ -21,6 +24,10 @@ public class ProductService {
     public List<ProductEntity> getProducts() {
         log.info("---------- Log : getProducts ---------");
         return productJpaRepository.findAll();
+    }
+    public Optional<ProductEntity> getProduct(long id) {
+        log.info("---------- Log : getProduct ---------");
+        return productJpaRepository.findById(id);
     }
 
     public void saveProducts(ProductEntity product) {

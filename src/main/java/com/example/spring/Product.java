@@ -10,7 +10,7 @@ import java.util.Random;
 @Getter
 
 public class Product {
-
+/*
     private Long id;
 
     private String name;
@@ -26,6 +26,7 @@ public class Product {
         this.id = Math.abs(random.nextLong() % 100L);
 
     }
+    */
 }
 
 

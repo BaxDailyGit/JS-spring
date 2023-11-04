@@ -1,22 +1,24 @@
 package com.example.spring;
 
+import lombok.Getter;
+
 import javax.persistence.*;
+import java.util.Random;
 
 @Table
 @Entity
 public class ProductEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
+    @Getter
     @Column
     private String name;
 
     @Column
-    private Long price;
+    private long price;
 
-
-    // 생성자와 getter
     public ProductEntity() {
 
     }
@@ -24,10 +26,6 @@ public class ProductEntity {
 
     public Long getId() {
         return id;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public Long getPrice() {
