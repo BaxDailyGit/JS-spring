@@ -24,10 +24,21 @@ public class ProductService {
     public List<ProductEntity> getProducts() {
         log.info("---------- Log : getProducts ---------");
         return productJpaRepository.findAll();
+
     }
+
+
     public Optional<ProductEntity> getProduct(long id) {
-        log.info("---------- Log : getProduct ---------");
-        return productJpaRepository.findById(id);
+
+        Optional<ProductEntity> product = productJpaRepository.findById(id);
+
+        if (product.isPresent()) {
+            log.info("---------- Log : getProduct : api/product/{" + id + "} ----------");
+            return product;
+        } else {
+            log.info("---------- Log : getProduct : api/product/{" + id + "} // not found in the database ----------");
+            return Optional.empty();
+        }
     }
 
     public void saveProducts(ProductEntity product) {

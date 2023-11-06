@@ -3,9 +3,6 @@ package com.example.spring;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-import java.util.Random;
-
 @NoArgsConstructor
 @Getter
 
