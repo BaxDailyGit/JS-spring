@@ -35,6 +35,11 @@ public class ProductController {
         return productService.getProduct(id);
     }
 
+    @GetMapping("api/product")
+    public ProductEntity getProductByName(@RequestParam String name) {
+        return productService.getProductByName(name);
+    }
+
 
     @PostMapping("/api/product")
     public void addProducts(@RequestBody ProductEntity product) {

@@ -2,6 +2,8 @@ package com.example.spring;
 
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,8 +38,19 @@ public class ProductService {
             log.info("---------- Log : getProduct : api/product/{" + id + "} ----------");
             return product;
         } else {
-            log.info("---------- Log : getProduct : api/product/{" + id + "} // not found in the database ----------");
+            log.info("---------- Log : getProduct : api/product/{" + id + "}  ----------");
             return Optional.empty();
+        }
+    }
+
+    public ProductEntity getProductByName(String name) {
+
+        List<ProductEntity> product = productJpaRepository.findByName(name);
+        if (!product.isEmpty()){
+            return product.get(0);
+        }
+        else {
+            return new ProductEntity("상품 준비중");
         }
     }
 

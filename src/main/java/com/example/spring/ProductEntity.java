@@ -22,6 +22,9 @@ public class ProductEntity {
     public ProductEntity() {
 
     }
+    public ProductEntity(String name) {
+        this.name = name;
+    }
 
 
     public Long getId() {
